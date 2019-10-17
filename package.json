@@ -8,9 +8,9 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "chalk": "^2.4.2",
     "fs-extra": "^8.1.0",
     "handlebars": "^4.4.3",
-    "pa11y": "^5.3.0",
-    "pa11y-reporter-html": "^1.0.0"
+    "pa11y": "^5.3.0"
   }
 }

@@ -12,7 +12,10 @@ const paths = [
 const runReport = () => Promise.all(
 	paths
 		.map(path => `${baseUrl}${basePath}${path}`)
-		.map(async url => await pa11y(url))
+		.map(async url => await pa11y(url, {
+			includeWarnings: true,
+			includeNotices: true
+		}))
 )
 
 module.exports = runReport
