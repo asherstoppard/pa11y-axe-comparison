@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Pa11y Report</title>
+	<script>
+		// [
+		// 	{
+		// 		"documentTitle": "Laser cut screens and Laser cut panels - Miles and Lincoln",
+		// 		"pageUrl": "https://www.milesandlincoln.com/",
+		// 		"issues": [
+		// 			{
+		// 				"code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+		// 				"type": "error",
+		// 				"typeCode": 1,
+		// 				"message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.32:1. Recommendation:  change background to #55534d.",
+		// 				"context": "<a href=\"https://www.milesandlincoln.com/\" aria-current=\"page\">About Us</a>",
+		// 				"selector": "#menu-item-21 > a",
+		// 				"runner": "htmlcs",
+		// 				"runnerExtras": {}
+		// 			},
+		// 			{
+		// 				"code": "WCAG2AA.Principle1.Guideline1_1.1_1_1.H30.2",
+		// 				"type": "error",
+		// 				"typeCode": 1,
+		// 				"message": "Img element is the only content of the link, but is missing alt text. The alt text should describe the purpose of the link.",
+		// 				"context": "<a href=\"https://uk.pinterest.com/milesandlincoln/miles-and-lincoln-laser-cut-screens/\" target=\"_blank\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"https://ww...</a>",
+		// 				"selector": "html > body > footer > div > div:nth-child(6) > div:nth-child(3) > a:nth-child(1)",
+		// 				"runner": "htmlcs",
+		// 				"runnerExtras": {}
+		// 			},
+		// 			{
+		// 				"code": "WCAG2AA.Principle1.Guideline1_1.1_1_1.H30.2",
+		// 				"type": "error",
+		// 				"typeCode": 1,
+		// 				"message": "Img element is the only content of the link, but is missing alt text. The alt text should describe the purpose of the link.",
+		// 				"context": "<a href=\"https://www.instagram.com/milesandlincoln/\" target=\"_blank\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"https://ww...</a>",
+		// 				"selector": "html > body > footer > div > div:nth-child(6) > div:nth-child(3) > a:nth-child(2)",
+		// 				"runner": "htmlcs",
+		// 				"runnerExtras": {}
+		// 			}
+		// 		]
+		// 	},
+	</script>
+	<style>
+		*,
+		*:before,
+		*:after {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			font-family: 'Helvetica Neue', sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Pa11y Report</h1>
+	</header>
+	{{#each report}}
+	<section>
+		<h2>{{this.pageUrl}}</h2>
+		{{#each this.issues}}
+			<ul>
+				<li>{{this.code}}</li>
+				<li>{{this.type}}</li>
+				<li>{{this.message}}</li>
+				<li>{{this.context}}</li>
+				<li>{{this.selector}}</li>
+			</ul>
+		{{/each}}
+	</section>
+	{{/each}}
+</body>
+</html>
