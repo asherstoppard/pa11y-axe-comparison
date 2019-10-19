@@ -4,14 +4,22 @@ import {
 	cliOutput
 } from './src'
 
-const baseUrl = 'https://www.milesandlincoln.com'
+const baseUrl = 'https://asherstoppard.com'
 
+/**
+ * URL's to test
+ * @type {string[]}
+ */
 const urls = [
 	'/',
-	'/styles',
-	'/projects'
+	// '/styles',
+	// '/projects'
 ].map(path => `${baseUrl}${path}`)
 
+/**
+ * Execute function for the pa11y suite
+ * @returns {Promise<void>}
+ */
 const execute = async () => {
 	const data = await runReport(urls)
 	await generateOutput(data)
