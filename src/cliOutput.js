@@ -1,26 +1,27 @@
-const chalk = require('chalk')
+import chalk from 'chalk'
 
-const cliOutput = reports => {
-	const count = reports.reduce((acc, { issues }) => {
-		const { warning, notice, error } = issues.reduce((acc, { type }) => (
-			{...acc, [type]: acc[type] + 1}
-		), { warning: 0, notice: 0, error: 0})
-		return {
-			...acc,
-			warning: acc.warning + warning,
-			notice: acc.notice + notice,
-			error: acc.error + error
-		}
-	}, {
-		warning: 0, notice: 0, error: 0
-	})
-	if (count.notice > 0) console.log(chalk.cyan(`Pa11y: Found ${count.notice} notices`))
-	if (count.warning > 0) console.log(chalk.yellow(`Pa11y: Found ${count.warning} warnings`))
-	if (count.error > 0) {
-		console.log(chalk.red(`Pa11y: Found ${count.error} errors`))
-		return 2
-	}
-	return 0
+const formats = {
+	notice: chalk.cyan,
+	warning: chalk.yellow,
+	error: chalk.red
 }
 
-module.exports = cliOutput
+const cliOutput = reports => {
+	const count = reports.reduce((rootAcc, { issues }) => {
+		const issueCount = issues.reduce((acc, { type }) => (
+			{...acc, [type]: acc[type] ? acc[type] + 1 : 1}
+		), {})
+		return {
+			...rootAcc,
+			...Object.entries(issueCount).reduce((acc, [key, val]) => ({
+				...acc,
+				[key]: rootAcc[key] ? rootAcc[key] + val : val
+			}), {})
+		}
+	}, {})
+	console.log('Pa11y test complete')
+	console.log(Object.entries(count).map(([key, val]) => val > 0 ? formats[key](`${val} ${key}s`) : '').join(' '))
+	return count.error > 0 ? 2 : 0
+}
+
+export default cliOutput

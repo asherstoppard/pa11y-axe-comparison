@@ -1,7 +1,7 @@
-const pa11y = require('pa11y')
+import pa11y from 'pa11y'
+import { URL } from 'url'
 
 const baseUrl = 'https://www.milesandlincoln.com'
-const basePath = ''
 
 const paths = [
 	'/',
@@ -11,11 +11,11 @@ const paths = [
 
 const runReport = () => Promise.all(
 	paths
-		.map(path => `${baseUrl}${basePath}${path}`)
+		.map(path => `${baseUrl}${path}`)
 		.map(async url => await pa11y(url, {
 			includeWarnings: true,
 			includeNotices: true
 		}))
 )
 
-module.exports = runReport
+export default runReport
