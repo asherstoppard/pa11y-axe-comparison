@@ -1,10 +1,4 @@
-import chalk from 'chalk'
-
-const formats = {
-	notice: chalk.cyan,
-	warning: chalk.yellow,
-	error: chalk.red
-}
+import formatters from './formatters'
 
 const cliOutput = reports => {
 	const count = reports.reduce((rootAcc, { issues }) => {
@@ -20,7 +14,9 @@ const cliOutput = reports => {
 		}
 	}, {})
 	console.log('Pa11y test complete')
-	console.log(Object.entries(count).map(([key, val]) => val > 0 ? formats[key](`${val} ${key}s`) : '').join(' '))
+	console.log(Object.entries(count).map(([key, val]) =>
+		val > 0 ? formatters[key](`${val} ${key}s`) : '').join(' ')
+	)
 	return count.error > 0 ? 2 : 0
 }
 
