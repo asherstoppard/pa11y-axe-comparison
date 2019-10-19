@@ -4,16 +4,14 @@ import {
 	cliOutput
 } from './src'
 
-const baseUrl = 'https://asherstoppard.com'
+const baseUrl = 'https://www.asherstoppard.com'
 
 /**
  * URL's to test
  * @type {string[]}
  */
 const urls = [
-	'/',
-	// '/styles',
-	// '/projects'
+	'/'
 ].map(path => `${baseUrl}${path}`)
 
 /**
