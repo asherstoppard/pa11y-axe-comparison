@@ -2,16 +2,17 @@ import {
 	runReport,
 	generateOutput,
 	cliOutput
-} from './src'
+} from './src/pa11y'
 
-const baseUrl = 'https://www.asherstoppard.com'
+const baseUrl = 'https://www.boots.com'
 
 /**
  * URL's to test
  * @type {string[]}
  */
 const urls = [
-	'/'
+	'/',
+	'/christmas'
 ].map(path => `${baseUrl}${path}`)
 
 /**

@@ -5,12 +5,16 @@
   "author": "Asher Stoppard <asher@asherstoppard.com>",
   "license": "MIT",
   "scripts": {
-    "start": "babel-node --presets @babel/preset-env index.js"
+    "start": "babel-node --presets @babel/preset-env index.js",
+    "axe:report": "babel-node --presets @babel/preset-env src/axe/index.js",
+    "axe": "axe https://www.boots.com, https://www.boots.com/christmas --save src/axe/report/results.json --tags wcag2a && yarn axe:report"
   },
   "dependencies": {
+    "@boots/accessibility": "1.0.0",
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
+    "axe-cli": "^3.2.0",
     "chalk": "^2.4.2",
     "fs-extra": "^8.1.0",
     "handlebars": "^4.4.3",
